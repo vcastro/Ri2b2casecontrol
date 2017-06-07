@@ -26,7 +26,8 @@ case_control <- function (dem_tbl,
                           visit_cd = "V",
                           outcome_cd = "O",
                           riskWindow_daysPreIndex_start = 365,
-                          riskWindow_daysPreIndex_end = 1
+                          riskWindow_daysPreIndex_end = 1,
+                          controls_num = 3
                          )
 {
 
@@ -91,7 +92,7 @@ cohort_file <- controlpool %>% ungroup() %>%
 
 
 #do the matching
-m <- Ri2b2matchcontrols::matchcontrols(cohort_file, controls_to_match = 3, match_variables = c("age_at_index", "SEX_CD", "RACE_CD", "index_year"))
+m <- Ri2b2matchcontrols::matchcontrols(cohort_file, controls_to_match = controls_num, match_variables = c("age_at_index", "SEX_CD", "RACE_CD", "index_year"))
 
 final_cohorts <- cohort_file %>%
   inner_join(m$match_data, by=c("patient_num","SEX_CD","RACE_CD","age_at_index","cohort", "index_year")) %>%

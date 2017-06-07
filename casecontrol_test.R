@@ -8,12 +8,13 @@ system.time({
   visit_cd <- "V"
   outcome <- "O"
 
-
+d %>% group_by(concept_cd) %>% summarise(n())
 
   c <- case_control(dem_tbl=p,
                     data_tbl=d,
                     dict_tbl=dict,
-                    exposure_cds = c("RXNORM:8640", "RXNORM:5492","NDFRT:N0000029116","NDFRT:N0000029132","NDFRT:N0000029168","NDFRT:N0000029178"),
+                    exposure_cds = c('RXNORM:8640', 'RXNORM:5492','NDFRT:N0000029116','NDFRT:N0000029132','NDFRT:N0000029168',
+                                     'NDFRT:N0000029178','RXNORM:7646','RXNORM:40790','RXNORM:283742'),
                     riskWindow_daysPreIndex_start=730,
                     riskWindow_daysPreIndex_end=30)
 

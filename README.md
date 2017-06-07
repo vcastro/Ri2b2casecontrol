@@ -1,7 +1,7 @@
 Ri2b2casecontrol
 ==================
 
-R package that to run a case-control analysis from i2b2-generated data.  Typicall run from a i2b2 webclient/server plugin
+R package that to run a case-control analysis from i2b2-generated data.  Typically run from a i2b2 webclient/server plugin
 
 
 Installation
