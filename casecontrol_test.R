@@ -4,12 +4,6 @@ system.time({
   d <- read.csv("c:/projects/test_data/test_casecontrol_analysistable.csv", na.strings = "NULL", fileEncoding = "UTF-8-BOM")
   dict <- read.csv("c:/projects/test_data/test_casecontrol_dictionary.csv", na.strings= "NULL", fileEncoding = "UTF-8-BOM")
 
-
-  visit_cd <- "V"
-  outcome <- "O"
-
-d %>% group_by(concept_cd) %>% summarise(n())
-
   c <- case_control(dem_tbl=p,
                     data_tbl=d,
                     dict_tbl=dict,
@@ -25,7 +19,8 @@ View(c$results %>% arrange(desc(clogit_OR)))
 
 #plot(jitter(a$age_at_index,0.3), a$index_year, col=a$cohort)
 
-#tableone::CreateTableOne(data=a, strata = "cohort")
+#tableone::CreateTableOne(data=c$cohort_file, strata = "cohort")
+#d %>% group_by(concept_cd) %>% summarise(n())
 #table(substring(cases_final$index_date,0,4))
 #length(unique(final_cohorts$patient_num))
 #table(final_cohorts$cohort, final_cohorts$index_year)
