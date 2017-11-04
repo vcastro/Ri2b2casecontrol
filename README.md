@@ -7,12 +7,10 @@ R package that to run a case-control analysis from i2b2-generated data.  Typical
 Installation
 ------------
 
-The package can be installed directly from Partners GitLab:
+The package can be installed directly from Github/Gitlab
+
 
 ``` r
 install.packages("devtools")
 
-## Windows credentials store (will be different in Mac)
-creds = git2r::cred_ssh_key("C:\\Users\\{username}\\.ssh\\id_rsa.pub", "C:\\Users\\{username}\\.ssh\\id_rsa")
-
-devtools::install_git("git@gitlab.partners.org:vc070/Ri2b2casecontrol.git", credentials = creds)
+devtools::install_github("vcastro/Ri2b2casecontrol")

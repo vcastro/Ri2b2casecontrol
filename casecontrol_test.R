@@ -1,12 +1,14 @@
+library(Ri2b2casecontrol)
+
 system.time({
 
-  p <- read.csv("c:/projects/test_data/test_casecontrol_patients.csv", na.strings = "NULL", fileEncoding = "UTF-8-BOM")
-  d <- read.csv("c:/projects/test_data/test_casecontrol_analysistable.csv", na.strings = "NULL", fileEncoding = "UTF-8-BOM")
-  dict <- read.csv("c:/projects/test_data/test_casecontrol_dictionary.csv", na.strings= "NULL", fileEncoding = "UTF-8-BOM")
+  dem <- read.csv("c:/projects/test_data/test_casecontrol_patients.csv", na.strings = "NULL", fileEncoding = "UTF-8-BOM")
+  df <- read.csv("c:/projects/test_data/test_casecontrol_analysistable.csv", na.strings = "NULL", fileEncoding = "UTF-8-BOM")
+  dict_tbl <- read.csv("c:/projects/test_data/test_casecontrol_dictionary.csv", na.strings= "NULL", fileEncoding = "UTF-8-BOM")
 
-  c <- case_control(dem_tbl=p,
-                    data_tbl=d,
-                    dict_tbl=dict,
+  c <- case_control(p=dem,
+                    d=df,
+                    dict=dict_tbl,
                     exposure_cds = c('RXNORM:8640', 'RXNORM:5492','NDFRT:N0000029116','NDFRT:N0000029132','NDFRT:N0000029168',
                                      'NDFRT:N0000029178','RXNORM:7646','RXNORM:40790','RXNORM:283742'),
                     riskWindow_daysPreIndex_start=730,
@@ -14,6 +16,8 @@ system.time({
 
 })
 
+
+write.csv(c$results, "c:/projects/test_data/casecontrol_results.csv")
 
 View(c$results %>% arrange(desc(clogit_OR)))
 
